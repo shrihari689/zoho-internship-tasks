@@ -14,7 +14,7 @@
 			<t:input type="text" other="required minlength='3'" label="Username" name="username" placeholder="Enter Username" />			
 			<t:input type="password" other="required minlength='6'" label="Password" name="password" placeholder="Enter Password" />			
 			
-			<t:button type="submit" value="Register" />
+			<t:button other="w-full" type="submit" value="Register" />
 			
 			<p>If you already have an account, <a class="text-blue-800 font-semibold" href="/auth/login">login here</a></p>
 			

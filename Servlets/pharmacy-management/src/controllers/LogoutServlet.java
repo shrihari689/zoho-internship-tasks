@@ -29,7 +29,8 @@ public class LogoutServlet extends HttpServlet {
 		while(names.hasNext()) {
 			session.removeAttribute(names.next());
 		}
-	
+		
+		resp.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);	
 		resp.sendRedirect("/");
 	}
 	
