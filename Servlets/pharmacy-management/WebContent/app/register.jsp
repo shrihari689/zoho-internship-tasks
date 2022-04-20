@@ -6,6 +6,10 @@
 	
 	<main class="my-5">
 		
+		<div class="flex justify-center">
+			<h1 class="text-xl font-semibold ">Create an account</h1>
+		</div>
+		
 		<t:error-alert heading="Attention needed" />
 		
 		<form action="/auth/register" class="flex flex-col items-center max-w-xl mx-auto" method="POST">

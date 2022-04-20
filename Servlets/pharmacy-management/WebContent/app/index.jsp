@@ -6,7 +6,7 @@
 	 
 	<%@include file="/shared/navbar.jsp" %>
 	
-	<header class="max-w-4xl mx-auto pt-10 pb-5">
+	<header class="max-w-4xl mx-auto pt-5 px-5">
 	
 		<form action="/search" class="w-full bg-white rounded-md flex items-center b-1 border-gray-400 shadow-md">
 		    <input type="search" required name="query" class="w-full bg-white text-black h-full rounded-md p-5 pl-6 outline-none" placeholder="Search for medicines..">
@@ -16,6 +16,13 @@
 		      </svg>
 		    </button>
 		</form>
+		
+		<div class="flex items-center justify-center my-5 w-full space-x-4">
+			<a href="/returns" class="font-semibold bg-gray-200 rounded-full py-1 px-4 ring-2 ring-gray-200 hover:ring-gray-400 text-indigo-800 hover:text-indigo-700">View Returns</a>
+			<a href="/orders/cancel/" class="font-semibold bg-gray-200 rounded-full py-1 px-4 ring-2 ring-gray-200 hover:ring-gray-400 text-indigo-800 hover:text-indigo-700">Cancel Order</a>
+			<a href="/orders/return/" class="font-semibold bg-gray-200 rounded-full py-1 px-4 ring-2 ring-gray-200 hover:ring-gray-400 text-indigo-800 hover:text-indigo-700">Return Order</a>
+			<a href="/reports" class="font-semibold bg-gray-200 rounded-full py-1 px-4 ring-2 ring-gray-200 hover:ring-gray-400 text-indigo-800 hover:text-indigo-700">Report Issue</a>
+		</div>
 
 	</header>
 	
@@ -43,10 +50,15 @@
 				                	</div>
 				                </div>
 				                 <div class="flex items-center justify-between">
-				                	<p class="text-sm w-full text-gray-600 truncate">
-				                		Quantity: <strong>${item.quantity}</strong>
-				                	</p>
-				                	<t:button-with-link other="w-28" link="/order/details/${item.code}" value="${item.code}" /> 
+				                	<div>
+					                	<p class="text-sm w-full text-gray-600 truncate">
+					                		Order ID: <strong>${item.code}</strong>
+					                	</p>				                	
+					                	<p class="text-sm w-full text-gray-600 truncate">
+					                		Quantity: <strong>${item.quantity}</strong>
+					                	</p>
+				                	</div>
+			                		<t:button-with-link other="bg-gray-800 hover:bg-gray-900 pointer-events-none cursor-default" link="" value="${item.status.toString()}" /> 
 								</div>	
 				            </div>
 				        </li>

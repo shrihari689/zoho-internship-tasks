@@ -6,6 +6,12 @@
 	
 	<main class="my-5">
 		
+		
+		<div class="flex justify-center">
+			<img class="h-44" src="https://i.pinimg.com/originals/ce/35/14/ce351420c5b09a45b3173dc222e76b84.png">
+		</div>
+		
+		
 		<t:error-alert heading="Attention needed" />
 		
 		<form action="/auth/login" class="flex flex-col items-center max-w-xl mx-auto" method="POST">

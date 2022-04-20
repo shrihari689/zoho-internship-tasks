@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.Order;
 import models.User;
+import services.MedicineService;
 import services.OrderService;
 
 @WebServlet({"/", "/app"})
@@ -27,18 +28,25 @@ public class HomeServlet extends HttpServlet {
 		User user = (User) req.getSession().getAttribute("user");
 
 		if((user != null) && user.isAdmin()) {			
+			int todayCount = OrderService.todayOrdersCount();
+			int pendingCount = OrderService.pendingOrdersCount();
+			int outOfStockCount = MedicineService.outOfStockCount();
+			double todayRevenue = OrderService.todayRevenue();
+			int todayReturnCount = OrderService.todayReturnsCount();
+			
+			req.setAttribute("todayCount", todayCount);
+			req.setAttribute("pendingCount", pendingCount);
+			req.setAttribute("outOfStockCount", outOfStockCount);
+			req.setAttribute("todayRevenue", todayRevenue);
+			req.setAttribute("todayReturnCount", todayReturnCount);
 			req.getRequestDispatcher("/app/admin/index.jsp").forward(req, resp);
-		} else {
-			
+		} else if(user != null) {
 			int userId = user.getId();
-			
 			List<Order> orders = OrderService.listByUserId(userId, 0, 10);
-			
-			System.out.println(orders);
-			
-			req.setAttribute("orders", orders);
-			
+			req.setAttribute("orders", orders);			
 			req.getRequestDispatcher("/app/index.jsp").forward(req, resp);			
+		} else {
+			resp.sendRedirect("/");
 		}
 		
 	}

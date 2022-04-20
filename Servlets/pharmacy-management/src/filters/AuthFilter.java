@@ -28,6 +28,7 @@ public class AuthFilter implements Filter {
 		
 		HttpSession session = httpRequest.getSession();
 		if((session != null) && (session.getAttribute("user") != null)) {
+			
 			if(httpRequest.getRequestURI().equals("/")) {
 				httpResponse.sendRedirect("/app");
 			} else {				
